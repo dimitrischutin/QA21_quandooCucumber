@@ -6,7 +6,6 @@ import de.quandoo.util.PropertiesLoader;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
 
 /**
  * HomePage
@@ -25,14 +24,17 @@ public class HomePage {
     private static By homePageLogo = By.cssSelector(".hBJuXh");
     private static By userIcon = By.xpath("//button[@data-qa='header-navigation-button']");
     private static By logoutItemMenu = By.xpath("//div[@data-qa='header-navigation-logout']");
+    private static By findBtn = By.xpath("//button[@data-qa='button-search-find-hero']");
+    private static By inputDistination = By.cssSelector(".tsxAj");
 
     /** Methods **/
 
     public void acceptAllCookies() {
-
+        pause(2000);
         if ($(accCookies).exists()){
             $(accCookies).click();
         }
+        pause(2000);
     }
 
     public SelenideElement homePageLogo(){
@@ -57,13 +59,13 @@ public class HomePage {
         return $(logoutItemMenu);
     }
 
-//    public void pause(int millis) {
-//        try {
-//            Thread.sleep(millis);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public void pause(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void clickLogoutItemMenu() {
         $(logoutItemMenu).click();
@@ -71,5 +73,17 @@ public class HomePage {
 
     public SelenideElement UserIcon() {
         return $(userIcon);
+    }
+
+    public RestBerlinPage clickFindButton() {
+        pause(2000);
+        $(findBtn).click();
+        return Selenide.page(RestBerlinPage.class);
+    }
+
+    public void inputBerlin(String BerlinStr) {
+//        $(inputDistination).click();
+//        $(inputDistination).clear();
+        $(inputDistination).setValue(BerlinStr);
     }
 }
