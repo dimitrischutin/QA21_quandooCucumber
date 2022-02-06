@@ -16,6 +16,8 @@ Feature: Quandoo Login Feature
     When I hover on the User icon
     Then I see Log out item menu
 
+    When I click on Log out item menu
+    Then I should see Homepage
 
   @invalidPasswordLogin
   Scenario Outline: Login with invalid password
@@ -36,8 +38,8 @@ Feature: Quandoo Login Feature
       | iryna.ayguen@web.de | Ira123654_ |
 
 
-  @invalidEmailLoginWithFaker
-  Scenario: Login with an invalid email
+  @invalidFakerEmailLogin
+  Scenario: Login with an invalid email from faker
 
     Given I am on the Homepage
     When I click on the Login icon

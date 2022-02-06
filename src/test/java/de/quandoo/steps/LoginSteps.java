@@ -56,6 +56,12 @@ public class LoginSteps {
         homePage.logoutItemMenu().shouldBe(visible);
     }
 
+    @When ("I click on Log out item menu")
+    public void iClickLogoutItemMenu(){
+        homePage.clickLogoutItemMenu();
+    }
+
+
     @And("I insert a valid email and an invalid password")
     public void enterDataWithInvalidPassword (DataTable table){
         List<Map<String,String>> dataTable = table.asMaps();

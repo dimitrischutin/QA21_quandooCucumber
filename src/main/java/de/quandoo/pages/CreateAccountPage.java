@@ -1,5 +1,6 @@
 package de.quandoo.pages;
 
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import com.codeborne.selenide.SelenideElement;
 import de.quandoo.util.PropertiesLoader;
@@ -42,7 +43,8 @@ public class CreateAccountPage {
         $(checkbox).click();
     }
 
-    public void clickCreateAccountBtn(){
+    public HomePage clickCreateAccountBtn(){
         $(createAccountBtn).click();
+        return Selenide.page(HomePage.class);
     }
 }

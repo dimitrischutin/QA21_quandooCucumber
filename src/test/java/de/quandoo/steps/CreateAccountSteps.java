@@ -44,7 +44,7 @@ public class CreateAccountSteps {
 
     @And("I click on Create account button")
     public void iClickCreateAccountButton() {
-        createAccountPage.clickCreateAccountBtn();
+        homePage=createAccountPage.clickCreateAccountBtn();
     }
 
 }

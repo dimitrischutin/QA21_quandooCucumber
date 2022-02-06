@@ -25,7 +25,7 @@ public class HomePageSteps {
     @Then("I should see Homepage")
     public void iShouldSeeHomepage() {
 
-        homePage.homePageTitle().should(exist);
+        homePage.homePageLogo().should(exist);
         homePage.acceptAllCookies();
 
     }

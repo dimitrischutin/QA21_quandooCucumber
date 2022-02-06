@@ -1,6 +1,5 @@
 package de.quandoo.pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import de.quandoo.util.PropertiesLoader;
@@ -23,20 +22,21 @@ public class HomePage {
     private static By accCookies = By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
     private static By loginIcon = By.xpath("//a[@data-qa='header-login-btn']");
     private static By signUpIcon = By.xpath("//a[@data-qa='header-register-btn']");
-    private static By homePageTitle = By.cssSelector(".VitfE");
+    private static By homePageLogo = By.cssSelector(".hBJuXh");
     private static By userIcon = By.xpath("//button[@data-qa='header-navigation-button']");
     private static By logoutItemMenu = By.xpath("//div[@data-qa='header-navigation-logout']");
 
     /** Methods **/
 
     public void acceptAllCookies() {
+        pause(2000);
         if ($(accCookies).exists()){
             $(accCookies).click();
         }
     }
 
-    public SelenideElement homePageTitle(){
-        return $(homePageTitle);
+    public SelenideElement homePageLogo(){
+        return $(homePageLogo);
     }
 
     public LoginPage clickLoginIcon() {
@@ -55,5 +55,21 @@ public class HomePage {
 
     public SelenideElement logoutItemMenu() {
         return $(logoutItemMenu);
+    }
+
+    public void pause(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clickLogoutItemMenu() {
+        $(logoutItemMenu).click();
+    }
+
+    public SelenideElement UserIcon() {
+        return $(userIcon);
     }
 }
