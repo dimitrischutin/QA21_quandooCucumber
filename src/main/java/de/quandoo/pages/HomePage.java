@@ -29,7 +29,7 @@ public class HomePage {
     /** Methods **/
 
     public void acceptAllCookies() {
-        pause(2000);
+
         if ($(accCookies).exists()){
             $(accCookies).click();
         }
@@ -57,13 +57,13 @@ public class HomePage {
         return $(logoutItemMenu);
     }
 
-    public void pause(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public void pause(int millis) {
+//        try {
+//            Thread.sleep(millis);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public void clickLogoutItemMenu() {
         $(logoutItemMenu).click();
