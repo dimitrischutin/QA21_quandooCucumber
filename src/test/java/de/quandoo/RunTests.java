@@ -9,9 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/de.quandoo",
         plugin = {"json:target/cucumber-report.json", "pretty"},
         glue = "de.quandoo",
-        //tags = "@validDataSignUp"
-        tags = "not @validDataSignUp"
-
+        tags = "@regression and @smoke"
 )
 
 public class RunTests {

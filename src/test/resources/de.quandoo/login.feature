@@ -1,13 +1,16 @@
+@regression
 Feature: Quandoo Login Feature
   In order to see the user area
   I log in to the website
 
-  @validDataLogin
-  Scenario: Successful Login
-
-    Given I am on the Homepage
+  Background:
+    Given I am on the Homepage page
     When I click on the Login icon
     Then I see Login page
+
+  @validDataLogin @positive
+  Scenario: Successful Login and Logout
+  I log in to the system and then I log out successfully. (JIRA-123)
 
     When I insert valid user credentials
     And I click on Login button
@@ -20,31 +23,26 @@ Feature: Quandoo Login Feature
     Then I should see Homepage
 
   @invalidPasswordLogin
-  Scenario Outline: Login with invalid password
-
-    Given I am on the Homepage
-    When I click on the Login icon
-    Then I see Login page
-
-    And I insert a valid email and an invalid password
+  Scenario Outline: Login with invalid data
+    When I insert a valid email and an invalid password
       | email   | password   |
       | <email> | <password> |
 
     And I click on Login button
-    Then Message appeared
+    Then I see that message appeared
+    """
+<errorMessage>
+    """
     Examples:
-      | email               | password   |
-      | iryna.ayguen@web.de | Ira123456_ |
-      | iryna.ayguen@web.de | Ira123654_ |
+      | email               | password   | errorMessage                     |
+      | iryna.ayguen@web.de | Ira123456_ | Enter valid username             |
+      | iryna.ayguen@web.de |            | Enter valid password             |
+      | iryna.ayguen@       | I          | Please enter correct email       |
+      |                     |            | Enter valid username or password |
 
 
   @invalidFakerEmailLogin
   Scenario: Login with an invalid email from faker
-
-    Given I am on the Homepage
-    When I click on the Login icon
-    Then I see Login page
-
     When I insert invalid Faker-email
     And I click on Login button
     Then Message appeared

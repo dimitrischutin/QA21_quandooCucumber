@@ -2,9 +2,9 @@ Feature: Quandoo SignUp Feature
   In order to see the user area
   I sign up to the website
 
-  @validDataSignUp
+  @validDataSignUp @regression
   Scenario: Successful SignUp
-    Given I am on the Homepage
+    Given I am on the Homepage page
     When I click on the SignUp icon
     Then I see CreateAccount page
 

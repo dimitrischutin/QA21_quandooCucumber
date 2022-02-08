@@ -7,7 +7,7 @@ import de.quandoo.util.PropertiesLoader;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CreateAccountPage {
+public class CreateAccountPage extends Page {
 
     /* Properties */
     private static String validFirstName = PropertiesLoader.loadProperty("valid.firstname");

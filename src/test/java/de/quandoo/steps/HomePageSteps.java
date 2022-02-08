@@ -16,11 +16,11 @@ import static de.quandoo.pages.HomePage.basicURL;
 public class HomePageSteps {
     HomePage homePage;
 
-    @Given("I am on the Homepage")
-    public void iAmOnHomePage() {
-        homePage = open(basicURL, HomePage.class);
-        homePage.acceptAllCookies();
-    }
+//    @Given("I am on the Homepage")
+//    public void iAmOnHomePage() {
+//        homePage = open(basicURL, HomePage.class);
+//        homePage.acceptAllCookies();
+//    }
 
     @Then("I should see Homepage")
     public void iShouldSeeHomepage() {

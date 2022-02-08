@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FilterSteps {
     HomePage homePage;
-    RestBerlinPage restBerlinPage;
+    RestBerlinPage restBerlinPage = new RestBerlinPage();
 
     @When("I input Berlin")
     public void inputBerlin(){
@@ -21,7 +21,7 @@ public class FilterSteps {
         homePage.inputBerlin("Berlin");
     }
 
-    @And("I click  Find button")
+    @When("I click  Find button")
     public void clickFindButton(){
          restBerlinPage = homePage.clickFindButton();
     }
@@ -36,9 +36,9 @@ public class FilterSteps {
         restBerlinPage.clickTopRatedButton();
     }
 
-    @Then("rating of the first restaurant is more than 4")
-    public void firstRestaurantRatingIsMoreThen4(){
-        assertTrue(restBerlinPage.getFirstRestaurantRating() >= 4);
+    @Then("I see restaurants rating higher than {}")
+    public void firstRestaurantRatingIsMoreThen4(Integer rating){
+        assertTrue(restBerlinPage.getFirstRestaurantRating() >= rating);
     }
 
 
@@ -47,8 +47,15 @@ public class FilterSteps {
         restBerlinPage.selectAfricanCuisineFilter();
     }
 
-    @Then("the first restaurant has African cuisine label")
-    public void firstRestaurantHasAfricanCuisineLabel(){
-        assertEquals(restBerlinPage.getAfricanRestaurantCount(), restBerlinPage.getRestaurantListSize());
+    @Then("I see correct {} restaurant count")
+    public void firstRestaurantHasAfricanCuisineLabel(String filterName){
+        int filterRestCount = 0;
+        if (filterName.equals("African")){
+           filterRestCount = restBerlinPage.getAfricanRestaurantCount();
+        }
+        if (filterName.equals("Afghan")){
+//            filterRestCount = restBerlinPage.getAfghanRestaurantCount();
+        }
+        assertEquals(filterRestCount, restBerlinPage.getRestaurantListSize());
     }
 }

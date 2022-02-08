@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import de.quandoo.pages.HomePage;
 import de.quandoo.pages.LoginPage;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.docstring.DocString;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -78,8 +79,10 @@ public class LoginSteps {
         loginPage.validPasswordInput();
     }
 
-    @Then("Message appeared")
-    public void isMessageAppeared() {
+    @Then("I see that message appeared")
+    public void isMessageAppeared(DocString validationMsg) {
+        String msg = validationMsg.getContent();
         loginPage.message().should(Condition.exist);
+        loginPage.message().shouldHave(text(msg));
     }
 }

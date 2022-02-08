@@ -11,14 +11,13 @@ import static com.codeborne.selenide.Selenide.$;
  * HomePage
  * Class implements the HomePage methods and fields.
  */
-public class HomePage {
+public class HomePage extends Page {
     /* Properties */
 
     public static String basicURL = PropertiesLoader.loadProperty("url");
 
     /* Elements */
 
-    private static By accCookies = By.id("CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
     private static By loginIcon = By.xpath("//a[@data-qa='header-login-btn']");
     private static By signUpIcon = By.xpath("//a[@data-qa='header-register-btn']");
     private static By homePageLogo = By.cssSelector(".hBJuXh");
@@ -29,13 +28,7 @@ public class HomePage {
 
     /** Methods **/
 
-    public void acceptAllCookies() {
-        pause(2000);
-        if ($(accCookies).exists()){
-            $(accCookies).click();
-        }
-        pause(2000);
-    }
+
 
     public SelenideElement homePageLogo(){
         return $(homePageLogo);
@@ -59,13 +52,7 @@ public class HomePage {
         return $(logoutItemMenu);
     }
 
-    public void pause(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
     public void clickLogoutItemMenu() {
         $(logoutItemMenu).click();
